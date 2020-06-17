@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C62E754A2499A6B700E0179F /* imageHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imageHeader.h; sourceTree = "<group>"; };
 		C65F3A91248DD9440092BE4F /* Image processing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Image processing"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65F3A94248DD9440092BE4F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				C65F3A94248DD9440092BE4F /* main.cpp */,
+				C62E754A2499A6B700E0179F /* imageHeader.h */,
 			);
 			path = "Image processing";
 			sourceTree = "<group>";
