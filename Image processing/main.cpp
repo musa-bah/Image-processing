@@ -5,10 +5,18 @@
 //  Copyright © 2020 Musa Bah. All rights reserved.
 //
 
-#include <iostream>
+// Include the image header file
+#include "imageHeader.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+
+int main(int argc, const char *argv[])
+{
+    //Declare variables here.
+    cmd_line_info cmd_data;
+    
+    //Check for command line errors and read in data.
+    cmd_line_check0(argc, argv, cmd_data);
+    
     return 0;
 }
+
