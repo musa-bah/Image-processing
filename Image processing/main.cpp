@@ -12,10 +12,10 @@
 int main(int argc, const char *argv[])
 {
     //Declare variables here.
-    cmd_line_info cmd_data;
+    cmdLineInfo cmdData;
     
     //Check for command line errors and read in data.
-    cmd_line_check0(argc, argv, cmd_data);
+    cmdLineCheck0(argc, argv, cmdData);
     
     return 0;
 }

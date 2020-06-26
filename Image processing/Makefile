@@ -1,8 +1,8 @@
 CFLAGS = -c -std=c++17 -pedantic -Wall
 CC = g++
 
-image: main.o fileIO.o cmd_line_check.o
-		$(CC) -o image main.o fileIO.o cmd_line_check.o
+image: main.o fileIO.o cmdLineCheck.o
+		$(CC) -o image main.o fileIO.o cmdLineCheck.o
 		
 main.o: main.cpp imageHeader.h
 		$(CC) $(CFLAGS) main.cpp
@@ -10,10 +10,10 @@ main.o: main.cpp imageHeader.h
 fileIO.o: fileIO.cpp imageHeader.h
 		$(CC) $(CFLAGS) fileIO.cpp
 
-cmd_line_check.o: cmd_line_check.cpp imageHeader.h
-		$(CC) $(CFLAGS) cmd_line_check.cpp
+cmdLineCheck.o: cmdLineCheck.cpp imageHeader.h
+		$(CC) $(CFLAGS) cmdLineCheck.cpp
 
 clean:
-		rm main.o fileIO.o cmd_line_check.o
+		rm *.o
 
 

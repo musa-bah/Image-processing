@@ -17,33 +17,42 @@
 #endif /* imageHeader_h */
 
 //Structure to store commandline info.
-struct cmd_line_info
+struct cmdLineInfo
 {
-    std::string option_code, data_type;
-    std::string out_image_name, in_image_name;
-    int bright_set_value;
+    std::string optionCode, dataType;
+    std::string outImageName, inImageName;
+    int brightSetValue;
+    
+};
+
+struct imageInfo
+{
+    std::string magicNumber;
+    std::string comments;
+    int rows, cols;
+    int maxPixel;
     
 };
 
 //@@@@@@@@@@@@@@ Function prototypes @@@@@@@@@@@@@@@@@
-void usage_message();
+void usageMessage();
 
 // Check if data type is ASCII or Binary
-bool data_check(std::string data_type);
+bool dataCheck(std::string data_type);
 
 //Check if the option code is valid.
-bool option_checker(std::string option_code);
+bool optionChecker(std::string option_code);
 
 //Checks which command line check to use.
-void cmd_line_check0(int argc, const char *argv[], cmd_line_info &cmd_data);
+void cmdLineCheck0(int argc, const char *argv[], cmdLineInfo &cmdData);
 
 //Check for command line errors with 4 arguments.
-void cmd_line_check1(const char *argv[], cmd_line_info &cmd_data);
+void cmdLineCheck1(const char *argv[], cmdLineInfo &cmdData);
 
 //Check formmand line errors with 5 arguments.
-void cmd_line_check2(const char *argv[], cmd_line_info &cmd_data);
+void cmdLineCheck2(const char *argv[], cmdLineInfo &cmdData);
 
 //Check form command line errors with 6 arguments.
-void cmd_line_check3(const char *argv[], cmd_line_info &cmd_data);
+void cmdLineCheck3(const char *argv[], cmdLineInfo &cmdData);
 
 
