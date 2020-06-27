@@ -46,6 +46,8 @@ void cmdLineCheck0(int argc, const char *argv[], cmdLineInfo &cmd_data)
         std::cout << "Invalid arguments.\n" << std::endl;
         usageMessage();
     }
+    
+    return;
 }
 
 //Check one is used when there are 4 cmd arguments.
@@ -64,6 +66,8 @@ void cmdLineCheck1(const char *argv[], cmdLineInfo &cmdData)
         cmdData.outImageName = argv[2];
         cmdData.inImageName = argv[3];
     }
+    
+    return;
 }
 
 //Check two is used when there are 5 cmd arguments.
@@ -99,6 +103,8 @@ void cmdLineCheck2(const char *argv[], cmdLineInfo &cmdData)
         cmdData.outImageName = argv[3];
         cmdData.inImageName = argv[4];
     }
+    
+    return;
 }
 
 //Check three is used when there are 6 arguments.
@@ -130,6 +136,8 @@ void cmdLineCheck3(const char *argv[], cmdLineInfo &cmdData)
             cmdData.inImageName = argv[5];
         }
     }
+    
+    return;
 }
 
 void usageMessage()
@@ -156,4 +164,5 @@ void usageMessage()
     std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n";
     std::cout << std::endl;
     
+    return;
 }

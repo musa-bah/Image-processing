@@ -16,6 +16,8 @@
 
 #endif /* imageHeader_h */
 
+typedef unsigned char pixel;
+
 //Structure to store commandline info.
 struct cmdLineInfo
 {
@@ -31,6 +33,9 @@ struct imageInfo
     std::string comments;
     int rows, cols;
     int maxPixel;
+    pixel **redgray = nullptr;
+    pixel **green = nullptr;
+    pixel **blue = nullptr;
     
 };
 
@@ -54,5 +59,24 @@ void cmdLineCheck2(const char *argv[], cmdLineInfo &cmdData);
 
 //Check form command line errors with 6 arguments.
 void cmdLineCheck3(const char *argv[], cmdLineInfo &cmdData);
+
+// Open the in and out file in binary mode and read in file data.
+void openInImage(cmdLineInfo &cmdLineData, imageInfo &imageData);
+
+void openOutImage(cmdLineInfo &cmdLineData, imageInfo imageData);
+
+//Allocate and free memory
+void allocate2D(pixel **&color, int rows, int cols);
+
+void free2D(pixel **&color, int rows, int cols);
+
+//Read and write data.
+void readASCII(imageInfo &imageData, std::ifstream &inImage);
+
+void writeASCII(imageInfo imageData, std::ofstream &outImage);
+
+void readBinary();
+
+
 
 
