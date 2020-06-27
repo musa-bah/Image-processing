@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		C62E754C2499AD1200E0179F /* fileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C62E754B2499AD1200E0179F /* fileIO.cpp */; };
 		C65F3A95248DD9440092BE4F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C65F3A94248DD9440092BE4F /* main.cpp */; };
-		C6DED12B249C2F78004403EF /* cmd_line_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6DED12A249C2F78004403EF /* cmd_line_check.cpp */; };
+		C66325A124A595E400A1481B /* cmdLineCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C66325A024A595E400A1481B /* cmdLineCheck.cpp */; };
+		C6B3094F24A7BF0E008628BF /* memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6B3094E24A7BF0E008628BF /* memory.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,7 +30,8 @@
 		C62E754B2499AD1200E0179F /* fileIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fileIO.cpp; sourceTree = "<group>"; };
 		C65F3A91248DD9440092BE4F /* Image processing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Image processing"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65F3A94248DD9440092BE4F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		C6DED12A249C2F78004403EF /* cmd_line_check.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cmd_line_check.cpp; sourceTree = "<group>"; };
+		C66325A024A595E400A1481B /* cmdLineCheck.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cmdLineCheck.cpp; sourceTree = "<group>"; };
+		C6B3094E24A7BF0E008628BF /* memory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = memory.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +67,8 @@
 				C65F3A94248DD9440092BE4F /* main.cpp */,
 				C62E754A2499A6B700E0179F /* imageHeader.h */,
 				C62E754B2499AD1200E0179F /* fileIO.cpp */,
-				C6DED12A249C2F78004403EF /* cmd_line_check.cpp */,
+				C66325A024A595E400A1481B /* cmdLineCheck.cpp */,
+				C6B3094E24A7BF0E008628BF /* memory.cpp */,
 			);
 			path = "Image processing";
 			sourceTree = "<group>";
@@ -127,8 +130,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B3094F24A7BF0E008628BF /* memory.cpp in Sources */,
+				C66325A124A595E400A1481B /* cmdLineCheck.cpp in Sources */,
 				C65F3A95248DD9440092BE4F /* main.cpp in Sources */,
-				C6DED12B249C2F78004403EF /* cmd_line_check.cpp in Sources */,
 				C62E754C2499AD1200E0179F /* fileIO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
