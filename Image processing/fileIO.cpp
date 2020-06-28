@@ -10,7 +10,6 @@ void openInImage(cmdLineInfo &cmdLineData, imageInfo &imageData)
     char peekValue;
     
     inImage.open(cmdLineData.inImageName, std::ios::in | std::ios::binary);
-    std::cout << cmdLineData.inImageName << "\n";
     
     if (!inImage.is_open())
     {
@@ -29,7 +28,7 @@ void openInImage(cmdLineInfo &cmdLineData, imageInfo &imageData)
         while (peekValue == 35)
         {
             getline(inImage, comment);
-            imageData.comments += comment;
+            imageData.comments.push_back(comment);
             peekValue = inImage.peek();
         }
         
@@ -39,10 +38,11 @@ void openInImage(cmdLineInfo &cmdLineData, imageInfo &imageData)
         
         //Read in image data.
         if (imageData.magicNumber == "P3")
-            //read binary
+            //read ASCII
             readASCII(imageData, inImage);
         
         else if (imageData.magicNumber == "P6")
+            //read Binary
             std::cout << "here";
     
     }
@@ -58,6 +58,7 @@ void openOutImage(cmdLineInfo &cmdLineData, imageInfo imageData)
     //Declare variables here
     std::ofstream outImage;
     
+    //Add extension to the output image.
     if (cmdLineData.optionCode == "-g" || cmdLineData.optionCode == "-c")
         cmdLineData.outImageName += ".pgm";
     
@@ -80,7 +81,7 @@ void openOutImage(cmdLineInfo &cmdLineData, imageInfo imageData)
         {
             //Write ascii
             writeASCII(imageData, outImage);
-            std::cout << "ASCII data writtedn\n";
+            std::cout << "ASCII data written.\n";
         }
         
         else if (cmdLineData.dataType == "-ob")
@@ -96,27 +97,27 @@ void readASCII(imageInfo &imageData, std::ifstream &inImage)
     //Declare variables here.
     unsigned int data;
     
-    
     //Allocate mormory to read data into
-//    allocate2D(red, row, col);
-//    allocate2D(imageData.green, imageData.rows, imageData.cols);
-//    allocate2D(imageData.blue, imageData.rows, imageData.cols);
+    allocate2D(imageData.redgray, imageData.rows, imageData.cols);
+    allocate2D(imageData.green, imageData.rows, imageData.cols);
+    allocate2D(imageData.blue, imageData.rows, imageData.cols);
     
-//    for (int i = 0; i < imageData.rows; i++)
-//    {
-//        for (int j = 0; j < imageData.cols; j++)
-//        {
-//            inImage >> data;
-//            imageData.redgray[i][j] = unsigned (char (data));
-//
-//            inImage >> data;
-//            imageData.green[i][j] = unsigned (char (data));
-//
-//            inImage >> data;
-//            imageData.blue[i][j] = unsigned (char (data));
-//        }
-//    }
-//
+    //Read in data to allocated memory.
+    for (int i = 0; i < imageData.rows; i++)
+    {
+        for (int j = 0; j < imageData.cols; j++)
+        {
+            inImage >> data;
+            imageData.redgray[i][j] = unsigned (char (data));
+
+            inImage >> data;
+            imageData.green[i][j] = unsigned (char (data));
+
+            inImage >> data;
+            imageData.blue[i][j] = unsigned (char (data));
+        }
+    }
+
     return;
 }
 
@@ -128,6 +129,16 @@ void readBinary()
 //Write the file in ASCII format
 void writeASCII(imageInfo imageData, std::ofstream &outImage)
 {
+    //Write the image header to the output image.
+    outImage << imageData.magicNumber << "\n";
+    
+    //Write the comments.
+    for (int i = 0; i < imageData.comments.size(); i++)
+        outImage << imageData.comments[i] << "\n";
+    
+    outImage << imageData.cols << " " << imageData.rows << "\n";
+    outImage << imageData.maxPixel << "\n";
+    
     for (int i = 0; i < imageData.rows; i++)
     {
         for (int j = 0; j < imageData.cols; j++)

@@ -11,29 +11,20 @@
 
 int main(int argc, const char *argv[])
 {
-    //This is for testing
-    pixel **color = nullptr;
-    int rows = 10;
-    int cols = 10;
-    
-    
     //Declare variables here.
     cmdLineInfo cmdLineData;
     imageInfo imageData;
     
-    //Check for command line errors and read in data.
+    //Check for command line errors and read in command line data.
     cmdLineCheck0(argc, argv, cmdLineData);
     
     //Open the image and read in data.
     openInImage(cmdLineData, imageData);
     
+    //Format the image here. 
     
-    //openOutImage(cmdLineData, imageData);
-    
-    //This is for testing
-
-    allocate2D(color, rows, cols);
-    
+    //Open the output image and write data to it.
+    openOutImage(cmdLineData, imageData);
     
     return 0;
 }

@@ -30,7 +30,7 @@ struct cmdLineInfo
 struct imageInfo
 {
     std::string magicNumber;
-    std::string comments;
+    std::vector<std::string> comments;
     int rows, cols;
     int maxPixel;
     pixel **redgray = nullptr;
@@ -76,6 +76,8 @@ void readASCII(imageInfo &imageData, std::ifstream &inImage);
 void writeASCII(imageInfo imageData, std::ofstream &outImage);
 
 void readBinary();
+
+void writeBinary();
 
 
 
