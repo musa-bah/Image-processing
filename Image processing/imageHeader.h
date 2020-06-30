@@ -75,9 +75,9 @@ void readASCII(imageInfo &imageData, std::ifstream &inImage);
 
 void writeASCII(imageInfo imageData, std::ofstream &outImage);
 
-void readBinary();
+void readBinary(imageInfo &imageData, std::ifstream &inImage);
 
-void writeBinary();
+void writeBinary(imageInfo imageData, std::ofstream &outImage);
 
 
 

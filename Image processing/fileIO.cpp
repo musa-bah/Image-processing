@@ -43,7 +43,7 @@ void openInImage(cmdLineInfo &cmdLineData, imageInfo &imageData)
         
         else if (imageData.magicNumber == "P6")
             //read Binary
-            std::cout << "here";
+            readBinary(imageData, inImage);
     
     }
     
@@ -77,6 +77,7 @@ void openOutImage(cmdLineInfo &cmdLineData, imageInfo imageData)
     
     else
     {
+        //Check data type.
         if (cmdLineData.dataType == "-oa")
         {
             //Write ascii
@@ -87,8 +88,13 @@ void openOutImage(cmdLineInfo &cmdLineData, imageInfo imageData)
         else if (cmdLineData.dataType == "-ob")
         {
             //Write binary
+            writeBinary(imageData, outImage);
+            std::cout << "Binary data written.\n";
         }
     }
+    
+    outImage.close();
+    return;
     
 }
 
@@ -121,16 +127,11 @@ void readASCII(imageInfo &imageData, std::ifstream &inImage)
     return;
 }
 
-void readBinary()
-{
-    
-}
-
 //Write the file in ASCII format
 void writeASCII(imageInfo imageData, std::ofstream &outImage)
 {
     //Write the image header to the output image.
-    outImage << imageData.magicNumber << "\n";
+    outImage << "P3\n";
     
     //Write the comments.
     for (int i = 0; i < imageData.comments.size(); i++)
@@ -152,5 +153,55 @@ void writeASCII(imageInfo imageData, std::ofstream &outImage)
     
     return;
 }
+
+void readBinary(imageInfo &imageData, std::ifstream &inImage)
+{
+    //Declare variables here.
+    
+    //Allocate mormory to read data into
+    allocate2D(imageData.redgray, imageData.rows, imageData.cols);
+    allocate2D(imageData.green, imageData.rows, imageData.cols);
+    allocate2D(imageData.blue, imageData.rows, imageData.cols);
+    
+    //Read in the data.
+    for (int i = 0; i < imageData.rows; i++)
+    {
+        for (int j = 0; j < imageData.cols; j++)
+        {
+            inImage.read( (char *) &imageData.redgray[i][j], sizeof(pixel));
+            inImage.read( (char *) &imageData.green[i][j], sizeof (pixel));
+            inImage.read( (char *) &imageData.blue[i][j], sizeof (pixel));
+        }
+    }
+    
+    return;
+}
+
+void writeBinary(imageInfo imageData, std::ofstream &outImage)
+{
+    //Write the image header to the output image.
+    outImage << "P6\n";
+    
+    //Write the comments.
+    for (int i = 0; i < imageData.comments.size(); i++)
+        outImage << imageData.comments[i] << "\n";
+    
+    outImage << imageData.cols << " " << imageData.rows << "\n";
+    outImage << imageData.maxPixel << "\n";
+    
+    for (int i = 0; i < imageData.rows; i++)
+    {
+        for (int j = 0; j < imageData.cols; j++)
+        {
+            outImage.write( (char *) &imageData.redgray[i][j], sizeof(pixel));
+            outImage.write( (char *) &imageData.green[i][j], sizeof(pixel));
+            outImage.write( (char *) &imageData.blue[i][j], sizeof(pixel));
+        }
+    }
+    
+    return;
+}
+
+
 
 
